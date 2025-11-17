@@ -20,3 +20,4 @@ docker-compose up -d
 - Docker Hub: https://hub.docker.com/r/bartferr/wp-edidesk
 - GitHub: https://github.com/Edidesk/wp-edidesk
 test
+ 
