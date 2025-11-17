@@ -1,5 +1,5 @@
 # Usar a imagem oficial do WordPress como base
-FROM wordpress:latest
+FROM wordpress:6.7-php8.2-apache
 
 # Informações do mantenedor
 LABEL maintainer="Edidesk <contato@edidesk.com.br>"
