@@ -1,0 +1,13 @@
+.env
+.env.local
+*.log
+logs/
+*.sql
+*.tar.gz
+*.zip
+backup-*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
