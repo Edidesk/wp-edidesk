@@ -18,5 +18,4 @@ docker-compose up -d
 ## Links
 
 - Docker Hub: https://hub.docker.com/r/bartferr/wp-edidesk
-- GitHub: https://github.com/Edidesk/wp-edidesk
  
