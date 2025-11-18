@@ -11,7 +11,7 @@ docker-compose up -d
 
 ## Configurações
 
-- Upload: 256MB
+- Upload: 235.98MB
 - Memory: 512MB
 - Execution time: 300s
 
@@ -19,5 +19,4 @@ docker-compose up -d
 
 - Docker Hub: https://hub.docker.com/r/bartferr/wp-edidesk
 - GitHub: https://github.com/Edidesk/wp-edidesk
-test
  
