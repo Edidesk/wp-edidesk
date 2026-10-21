@@ -1,6 +1,7 @@
-# PHP 8.2.35 corrigido contra CVE-2026-109618 e CVE-2026-109619 (RCE, CVSS 9.2)
 # Base independente do ciclo de atualização da imagem oficial wordpress no Docker Hub
-FROM php:8.2.35-apache
+# Para atualizar o PHP: altere PHP_VERSION abaixo e faça push com a nova tag
+ARG PHP_VERSION=8.2.35
+FROM php:${PHP_VERSION}-apache
 
 LABEL maintainer="Edidesk <contato@edidesk.com.br>"
 LABEL description="WordPress customizado com configurações de PHP otimizadas - Edidesk"
