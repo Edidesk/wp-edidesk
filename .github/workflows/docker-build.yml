@@ -58,3 +58,19 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "WP ${{ steps.versions.outputs.wp }} · PHP ${{ steps.versions.outputs.php }}"
+          body: |
+            ## Imagem Docker
+            ```
+            docker pull bartferr/wp-edidesk:wp${{ steps.versions.outputs.wp }}-php${{ steps.versions.outputs.php }}
+            ```
+
+            ## Versões
+            - **WordPress:** ${{ steps.versions.outputs.wp }}
+            - **PHP:** ${{ steps.versions.outputs.php }}
+          generate_release_notes: true
