@@ -20,11 +20,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Extract PHP version from Dockerfile
-        id: php
+      - name: Extract versions from Dockerfile
+        id: versions
         run: |
           PHP_VERSION=$(grep 'ARG PHP_VERSION=' Dockerfile | cut -d= -f2)
-          echo "version=$PHP_VERSION" >> $GITHUB_OUTPUT
+          WP_VERSION=$(grep 'ARG WP_VERSION=' Dockerfile | cut -d= -f2)
+          echo "php=$PHP_VERSION" >> $GITHUB_OUTPUT
+          echo "wp=$WP_VERSION" >> $GITHUB_OUTPUT
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -45,7 +47,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=raw,value=latest,enable={{is_default_branch}}
-            type=raw,value=php${{ steps.php.outputs.version }}
+            type=raw,value=wp${{ steps.versions.outputs.wp }}-php${{ steps.versions.outputs.php }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5

@@ -1,6 +1,7 @@
 # Base independente do ciclo de atualização da imagem oficial wordpress no Docker Hub
-# Para atualizar o PHP: altere PHP_VERSION abaixo e faça push com a nova tag
+# Para atualizar: altere PHP_VERSION ou WP_VERSION abaixo e faça push com a nova tag
 ARG PHP_VERSION=8.2.35
+ARG WP_VERSION=7.1.3
 FROM php:${PHP_VERSION}-apache
 
 LABEL maintainer="Edidesk <contato@edidesk.com.br>"
@@ -98,8 +99,9 @@ RUN set -eux; \
     find /etc/apache2 -type f -name '*.conf' -exec sed -ri 's/([[:space:]]*LogFormat[[:space:]]+"[^"]*)(%)h([^"]*")/\1%a\3/g' '{}' +
 
 # Download e verificação do WordPress
+ARG WP_VERSION
 RUN set -eux; \
-    version='7.1.3'; \
+    version="${WP_VERSION}"; \
     sha1='491a78c7676b15dffcc69130c6054b8f49228a91'; \
     curl -o wordpress.tar.gz -fL "https://wordpress.org/wordpress-$version.tar.gz"; \
     echo "$sha1 *wordpress.tar.gz" | sha1sum -c -; \
